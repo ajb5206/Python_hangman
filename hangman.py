@@ -96,11 +96,12 @@ def get_available_letters(letters_guessed):
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     #cast string as list
     alphabet_list = list(alphabet)
-    for i, char in enumerate(letters_guessed):
+    for char in letters_guessed:
         if char in alphabet_list:
-            alphabet_list.pop(i)
-    return alphabet_list.join('')
-
+            #get index of char in alphabet list
+            index = alphabet_list.index(char)
+            alphabet_list.pop(index)
+    return "".join(alphabet_list)
 
 
 def hangman(secret_word, with_help):
