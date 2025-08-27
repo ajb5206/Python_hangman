@@ -93,7 +93,12 @@ def get_available_letters(letters_guessed):
       alphabetical order
     """
     # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    alphabet_list = alphabet.split('')
+    for i, char in enumerate(letters_guessed):
+        if char in alphabet_list:
+            alphabet_list.pop(i)
+    return alphabet_list.join('')
 
 
 
