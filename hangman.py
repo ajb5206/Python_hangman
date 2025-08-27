@@ -94,7 +94,8 @@ def get_available_letters(letters_guessed):
     """
     # FILL IN YOUR CODE HERE AND DELETE "pass"
     alphabet = "abcdefghijklmnopqrstuvwxyz"
-    alphabet_list = alphabet.split('')
+    #cast string as list
+    alphabet_list = list(alphabet)
     for i, char in enumerate(letters_guessed):
         if char in alphabet_list:
             alphabet_list.pop(i)
