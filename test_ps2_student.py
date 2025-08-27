@@ -463,7 +463,8 @@ if __name__ == '__main__':
     sys.stdout = MyStream(sys.stdout)
     suite = unittest.TestSuite()
     #suite.addTest(unittest.makeSuite(TestPS2))
-    suite.addTest(unittest.TestSuite(TestPS2))
+    #suite.addTest(unittest.TestSuite(TestPS2))
+    suite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(TestPS2))
     result = unittest.TextTestRunner(verbosity=2, resultclass=Results_600).run(suite)
 
     output = result.getOutput()
