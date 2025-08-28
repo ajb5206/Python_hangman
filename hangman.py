@@ -154,6 +154,24 @@ def hangman(secret_word, with_help):
     Follows the other limitations detailed in the problem write-up.
     """
     # FILL IN YOUR CODE HERE AND DELETE "pass"
+    secret_word_length = len(secret_word)
+    guesses = 10
+    letters_guessed = ""
+    print(f"The secret word contains {secret_word_length} letters and you have {guesses} guesses")
+    
+    
+    ## ROUNDS 
+    while guesses > 0:
+        print(f"You have {guesses} guesses remaining and the following letters remaining {get_available_letters(letters_guessed)}")
+        user_guess = input("Guess a letter: ")
+        letters_guessed += user_guess
+        print(get_word_progress(secret_word, letters_guessed))
+        has_player_won(secret_word, letters_guessed)
+        
+        if user_guess in "aeiou":
+            guesses -= 2
+        else:
+            guesses -= 1
     pass
 
 
@@ -164,9 +182,9 @@ def hangman(secret_word, with_help):
 if __name__ == "__main__":
     # To test your game, uncomment the following three lines.
 
-    # secret_word = choose_word(wordlist)
-    # with_help = False
-    # hangman(secret_word, with_help)
+    secret_word = choose_word(wordlist)
+    with_help = False
+    hangman(secret_word, with_help)
 
     # After you complete with_help functionality, change with_help to True
     # and try entering "!" as a guess!
