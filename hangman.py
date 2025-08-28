@@ -168,7 +168,7 @@ def hangman(secret_word, with_help):
         print(get_word_progress(secret_word, letters_guessed))
         has_player_won(secret_word, letters_guessed)
         
-        if user_guess in "aeiou":
+        if user_guess in "aeiou" and user_guess not in secret_word:
             guesses -= 2
         else:
             guesses -= 1
