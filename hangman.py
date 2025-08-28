@@ -55,13 +55,21 @@ def has_player_won(secret_word, letters_guessed):
         False otherwise
     """
     # FILL IN YOUR CODE HERE AND DELETE "pass"
+    
+    ## for empty string secret word
     if len(secret_word) == 0:
         return True
+    
+    # for char in secret_word:
+    #     #char is r, a ,r ,e
+    #     if char not in letters_guessed:
+    #         return False
+    
     for char in secret_word:
         # apple letters guess a p z d 
         if char not in letters_guessed:
             return False
-        return True
+    return True
     #pass
 
 
