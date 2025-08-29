@@ -162,6 +162,7 @@ def hangman(secret_word, with_help):
     
     ## ROUNDS 
     while guesses > 0:
+        print("--------------")
         print(f"You have {guesses} guesses remaining and the following letters remaining {get_available_letters(letters_guessed)}")
         user_guess = input("Guess a letter: ")
         
@@ -175,8 +176,11 @@ def hangman(secret_word, with_help):
         
         if user_guess in "aeiou" and user_guess not in secret_word:
             guesses -= 2
-        else:
+        elif user_guess not in secret_word:
             guesses -= 1
+        
+        if has_player_won(secret_word, letters_guessed) == True:
+            print("Congratulations, you've won!")
     pass
 
 ### change input to lower case somewhere
