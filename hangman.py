@@ -171,7 +171,7 @@ def hangman(secret_word, with_help):
         
         while user_input_check(user_guess, letters_guessed) == False:
             print("--------------")
-            user_guess = input("Guess a letter you jackass: ")
+            user_guess = input(f"Oops! That is not a valid letter. Please input a letter from the alphabet: {get_word_progress(secret_word, letters_guessed)}")
         
         
         letters_guessed += user_guess
@@ -182,10 +182,15 @@ def hangman(secret_word, with_help):
             print(f" Congratulations, you won!")
             print(f"Your total score for this game is: {user_score_calc(secret_word, guesses)}")
             return
-        if user_guess in "aeiou" and user_guess not in secret_word:
-            guesses -= 2
-        elif user_guess not in secret_word:
-            guesses -= 1
+        
+        if user_guess in secret_word:
+            print(f"Good guess: {get_word_progress(secret_word, letters_guessed)}")
+        else:
+            print(f"Opps! That letter is not in my word: {get_word_progress(secret_word, letters_guessed)}")
+            if user_guess in "aeiou":
+                guesses -= 2
+            else:
+                guesses -= 1
         # call game termination calculation
 
     if guesses <= 0:
