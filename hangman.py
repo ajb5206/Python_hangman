@@ -179,7 +179,10 @@ def hangman(secret_word, with_help):
         
         #Running check if player has won
 
-        
+        if guesses > 3 and user_input == "!":
+            helper_letter_reveal(secret_word, get_available_letters(letters_guessed))
+            
+            
         if user_guess in secret_word:
             print(f"Good guess: {get_word_progress(secret_word, letters_guessed)}")
         else:
@@ -230,6 +233,19 @@ def user_score_calc(secret_word, guesses):
     total_score = (guesses + 4 * unique_letters) + 3 * word_length
     return total_score
 
+
+def helper_letter_reveal(secret_word, available_letters):
+    # current_word_state = get_word_progress(secret_word, letters_guessed)
+    choose_from = ""
+    
+    for char in secret_word:
+        if char in letters_guessed and char not in choose_from:
+            choose_from += char
+    
+    new = random.randint(0, len(choose_from)-1)
+    revealed_letter = choose_from[new]
+    return revealed_letter
+    
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the lines to test
 
