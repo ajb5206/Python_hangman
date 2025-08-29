@@ -35,7 +35,7 @@ def choose_word(wordlist):
 
     returns: a word from wordlist at random
     """
-    return "hi"
+    return "tact"
     # return random.choice(wordlist)
 
 # -----------------------------------
@@ -171,11 +171,11 @@ def hangman(secret_word, with_help):
         
         while user_input_check(user_guess, letters_guessed) == False:
             print("--------------")
-            user_guess = input(f"Oops! That is not a valid letter. Please input a letter from the alphabet: {get_word_progress(secret_word, letters_guessed)}")
+            user_guess = input()
         
         
         letters_guessed += user_guess
-        print(get_word_progress(secret_word, letters_guessed))
+        # print(get_word_progress(secret_word, letters_guessed))
         
         #Running check if player has won
         if has_player_won(secret_word, letters_guessed):
@@ -201,28 +201,27 @@ def hangman(secret_word, with_help):
 ### check if already guessed 
 def user_input_check(user_input, letters_guessed):
     if len(user_input) != 1:
-        #print("Please guess a single letter: ")
+        print(f"Oops! That is not a valid letter. Please input a letter from the alphabet: {get_word_progress(secret_word, letters_guessed)}")
         return False
     elif user_input.isalpha() == False:
-        #print("Please guess a single letter: ")
+        print(f"Oops! That is not a valid letter. Please input a letter from the alphabet: {get_word_progress(secret_word, letters_guessed)}")
         return False
     elif user_input in letters_guessed:
-        print(f"You've already guessed {user_input}")
+        print(f"Opps! You've already guessed that letter: {get_word_progress(secret_word, letters_guessed)}")
         return False
     return True
 
 def user_score_calc(secret_word, guesses):
-    guesses_remaining = 10 - guesses
     unique_letters_holder = ""
     word_length = len(secret_word)
     
     for char in secret_word:
         if char not in unique_letters_holder:
-            unique_letters_holder + char
+            unique_letters_holder += char
             
     unique_letters = len(unique_letters_holder)
     
-    total_score = (guesses_remaining + 4 * unique_letters) + 3 * word_length
+    total_score = (guesses + 4 * unique_letters) + 3 * word_length
     return total_score
 
 # When you've completed your hangman function, scroll down to the bottom
