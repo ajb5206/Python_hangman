@@ -157,6 +157,7 @@ def hangman(secret_word, with_help):
     secret_word_length = len(secret_word)
     guesses = 10
     letters_guessed = ""
+    
     print(f"The secret word contains {secret_word_length} letters and you have {guesses} guesses")
     
     
@@ -179,11 +180,14 @@ def hangman(secret_word, with_help):
             guesses -= 2
         elif user_guess not in secret_word:
             guesses -= 1
-        
+        # do game termination calculation
         if has_player_won(secret_word, letters_guessed) == True:
-            print("Congratulations, you've won!")
+            print("Congratulations, you won!")
+            print(f"Your total score for this game is: {
+                10-guesses + 4 *
+                }")
             return
-    if guesses == 0:
+    if guesses <= 0:
         print(f"You lose. The word was {secret_word}")
     pass
 
