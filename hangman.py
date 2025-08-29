@@ -35,8 +35,8 @@ def choose_word(wordlist):
 
     returns: a word from wordlist at random
     """
-    return "hi"
-    # return random.choice(wordlist)
+
+    return random.choice(wordlist)
 
 # -----------------------------------
 # END OF HELPER CODE
@@ -178,11 +178,7 @@ def hangman(secret_word, with_help):
         # print(get_word_progress(secret_word, letters_guessed))
         
         #Running check if player has won
-        if has_player_won(secret_word, letters_guessed):
-            print("------")
-            print(f" Congratulations, you won!")
-            print(f"Your total score for this game is: {user_score_calc(secret_word, guesses)}")
-            return
+
         
         if user_guess in secret_word:
             print(f"Good guess: {get_word_progress(secret_word, letters_guessed)}")
@@ -193,9 +189,15 @@ def hangman(secret_word, with_help):
             else:
                 guesses -= 1
         # call game termination calculation
+        if has_player_won(secret_word, letters_guessed):
+            print("------")
+            print(f"Congratulations, you won!")
+            print(f"Your total score for this game is: {user_score_calc(secret_word, guesses)}")
+            return
 
     if guesses <= 0:
-        print(f"You lose. The word was {secret_word}")
+        print("------")
+        print(f"Sorry, you ran out of guesses. The word was {secret_word}")
     
 
 ### change input to lower case somewhere
