@@ -203,7 +203,10 @@ def hangman(secret_word, with_help):
 ### change input to lower case somewhere
 ### check if already guessed 
 def user_input_check(user_input, letters_guessed):
-    if len(user_input) != 1:
+    if user_input == "!":
+        with_help = True
+        return True
+    elif len(user_input) != 1:
         print(f"Oops! That is not a valid letter. Please input a letter from the alphabet: {get_word_progress(secret_word, letters_guessed)}")
         return False
     elif user_input.isalpha() == False:
