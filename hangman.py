@@ -166,7 +166,8 @@ def hangman(secret_word, with_help):
         print(f"You have {guesses} guesses remaining and the following letters remaining {get_available_letters(letters_guessed)}")
         user_guess = input("Guess a letter: ")
         
-        while user_input_check(user_guess) == False:
+        while user_input_check(user_guess, letters_guessed) == False:
+            print("--------------")
             user_guess = input("Guess a letter you jackass: ")
         
         
@@ -181,14 +182,22 @@ def hangman(secret_word, with_help):
         
         if has_player_won(secret_word, letters_guessed) == True:
             print("Congratulations, you've won!")
+            return
+    if guesses == 0:
+        print(f"You lose. The word was {secret_word}")
     pass
 
 ### change input to lower case somewhere
 ### check if already guessed 
-def user_input_check(user_input):
+def user_input_check(user_input, letters_guessed):
     if len(user_input) != 1:
+        #print("Please guess a single letter: ")
         return False
     elif user_input.isalpha() == False:
+        #print("Please guess a single letter: ")
+        return False
+    elif user_input in letters_guessed:
+        print(f"You've already guessed {user_input}")
         return False
     return True
 
