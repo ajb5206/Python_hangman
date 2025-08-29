@@ -35,7 +35,7 @@ def choose_word(wordlist):
 
     returns: a word from wordlist at random
     """
-    return "tact"
+    return "hi"
     # return random.choice(wordlist)
 
 # -----------------------------------
@@ -158,7 +158,7 @@ def hangman(secret_word, with_help):
     secret_word_length = len(secret_word)
     guesses = 10
     letters_guessed = ""
-    print("Wlecome to Hangman!")
+    print("Welcome to Hangman!")
     print(f"I am thinking of a word that is {secret_word_length} letters long")
     
     
@@ -179,6 +179,7 @@ def hangman(secret_word, with_help):
         
         #Running check if player has won
         if has_player_won(secret_word, letters_guessed):
+            print("------")
             print(f" Congratulations, you won!")
             print(f"Your total score for this game is: {user_score_calc(secret_word, guesses)}")
             return
@@ -195,7 +196,7 @@ def hangman(secret_word, with_help):
 
     if guesses <= 0:
         print(f"You lose. The word was {secret_word}")
-    pass
+    
 
 ### change input to lower case somewhere
 ### check if already guessed 
