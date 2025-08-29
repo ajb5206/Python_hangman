@@ -181,12 +181,7 @@ def hangman(secret_word, with_help):
         elif user_guess not in secret_word:
             guesses -= 1
         # do game termination calculation
-        if has_player_won(secret_word, letters_guessed) == True:
-            print("Congratulations, you won!")
-            print(f"Your total score for this game is: {
-                10-guesses + 4 *
-                }")
-            return
+
     if guesses <= 0:
         print(f"You lose. The word was {secret_word}")
     pass
@@ -204,6 +199,17 @@ def user_input_check(user_input, letters_guessed):
         print(f"You've already guessed {user_input}")
         return False
     return True
+
+def user_score_calc(secret_word, guesses):
+    guesses_remaining = 10 - guesses
+    unique_letters_holder = ""
+    word_length = len(secret_word)
+    
+    for char in secret_word:
+        if char not in unique_letters_holder:
+            unique_letters_holder + char
+            
+    unique_letters = len(unique_letters_holder)
 
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the lines to test
