@@ -35,7 +35,8 @@ def choose_word(wordlist):
 
     returns: a word from wordlist at random
     """
-    return random.choice(wordlist)
+    return "hi"
+    # return random.choice(wordlist)
 
 # -----------------------------------
 # END OF HELPER CODE
@@ -157,15 +158,16 @@ def hangman(secret_word, with_help):
     secret_word_length = len(secret_word)
     guesses = 10
     letters_guessed = ""
-    
-    print(f"The secret word contains {secret_word_length} letters and you have {guesses} guesses")
+    print("Wlecome to Hangman!")
+    print(f"I am thinking of a word that is {secret_word_length} letters long")
     
     
     ## ROUNDS 
     while guesses > 0:
         print("--------------")
-        print(f"You have {guesses} guesses remaining and the following letters remaining {get_available_letters(letters_guessed)}")
-        user_guess = input("Guess a letter: ")
+        print(f"You have {guesses} guesses left.")
+        print(f"Available Letters: {get_available_letters(letters_guessed)}")
+        user_guess = input("Please guess a letter: ")
         
         while user_input_check(user_guess, letters_guessed) == False:
             print("--------------")
