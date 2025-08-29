@@ -176,8 +176,10 @@ def hangman(secret_word, with_help):
         print(get_word_progress(secret_word, letters_guessed))
         
         #Running check if player has won
-        has_player_won(secret_word, letters_guessed)
-        
+        if has_player_won(secret_word, letters_guessed):
+            print(f" Congratulations, you won!")
+            print(f"Your total score for this game is: {user_score_calc(secret_word, guesses)}")
+            return
         if user_guess in "aeiou" and user_guess not in secret_word:
             guesses -= 2
         elif user_guess not in secret_word:
@@ -213,7 +215,7 @@ def user_score_calc(secret_word, guesses):
             
     unique_letters = len(unique_letters_holder)
     
-    total_score = (guesses_remaining + 4 * unique_letters) + 3 * length
+    total_score = (guesses_remaining + 4 * unique_letters) + 3 * word_length
     return total_score
 
 # When you've completed your hangman function, scroll down to the bottom
